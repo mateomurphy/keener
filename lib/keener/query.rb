@@ -8,7 +8,6 @@ module Keener
   end
 
   class Metric < Query
-
     def add_filter(property, operator, value)
       @options[:filters] ||= []
       @options[:filters] << {
@@ -59,10 +58,12 @@ module Keener
     end
   end
 
+  #TODO implement
   class Funnel < Query
 
   end
 
+  #TODO implement
   class Step < Query
 
   end

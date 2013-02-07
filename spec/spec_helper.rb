@@ -13,7 +13,8 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :faraday
   c.configure_rspec_metadata!
-  #TODO for now
+  
+  # Async tests don't work with vcr
   c.allow_http_connections_when_no_cassette = true
 end
 

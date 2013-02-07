@@ -16,7 +16,7 @@ describe 'em-http' do
       end
     end
 
-    it 'returns a response unfinished respons object' do
+    it 'returns a response' do
       EventMachine.run do
         Keener.projects.get.on_complete { |env|
           env[:body].first.id.should eq(PROJECT_ID)
