@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.keen.io/3.0/projects/50e8d5f43843316b28000001/queries/count?group_by=character&event_collection=votes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - b82b029917fa49af84a5827a43e537a7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Thu, 07 Feb 2013 18:39:38 GMT
+      content-type:
+      - application/json
+      connection:
+      - close
+      content-length:
+      - '597'
+      expires:
+      - Thu, 07 Feb 2013 18:39:38 GMT
+      server:
+      - TornadoServer/2.4.1
+      etag:
+      - ! '"4a71bc462e514e53611cd6f04711fe4d1f68693a"'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      access-control-allow-origin:
+      - ! '*'
+      access-control-allow-headers:
+      - origin, content-type, accept, authorization, user-agent
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"result\": [\n    {\n      \"character\": \"Troi\", \n      \"result\":
+        101\n    }, \n    {\n      \"character\": \"LaForge\", \n      \"result\":
+        571\n    }, \n    {\n      \"character\": \"No answer\", \n      \"result\":
+        397\n    }, \n    {\n      \"character\": \"Crusher\", \n      \"result\":
+        200\n    }, \n    {\n      \"character\": \"Replicator\", \n      \"result\":
+        171\n    }, \n    {\n      \"character\": \"Worf\", \n      \"result\": 330\n
+        \   }, \n    {\n      \"character\": \"Riker\", \n      \"result\": 280\n
+        \   }, \n    {\n      \"character\": \"Data\", \n      \"result\": 342\n    },
+        \n    {\n      \"character\": \"Picard\", \n      \"result\": 365\n    }\n
+        \ ]\n}"
+    http_version: 
+  recorded_at: Thu, 07 Feb 2013 18:39:38 GMT
+recorded_with: VCR 2.4.0
