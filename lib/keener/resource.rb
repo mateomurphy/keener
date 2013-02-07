@@ -6,27 +6,13 @@ module Keener
       @url = url
       @options = options
     end
-    
-    def connection
-      @connection ||= ::Faraday.new(:url => 'http://api.keen.io') do |config|
-        config.headers['Authorization'] = Keener.api_key
-
-        config.response :mashify
-        config.response :json
-
-        config.response :logger if Keener.log_responses
-
-        #config.use      :instrumentation      
-        config.adapter  Keener.adapter || ::Faraday.default_adapter
-      end
-    end
 
     def get(&block)
-      handle_response connection.get("#{version}/#{url}", options), &block
+      handle_response Keener.connection.get("#{version}/#{url}", options), &block
     end
 
     def head
-      connection.head("#{version}/#{url}", options)
+      Keener.connection.head("#{version}/#{url}", options)
     end
 
     def parse_response(body)

@@ -6,11 +6,11 @@ describe 'em-http' do
     Keener.adapter = :em_http
   end
 
-  context 'within an event machine loop' do
+  context 'in an event machine loop' do
     it 'calls a passed block' do
       EventMachine.run do
         Keener.projects.get { |response|
-          response.first.id.should eq('50e8d5f43843316b28000001')
+          response.first.id.should eq(PROJECT_ID)
           EventMachine.stop
         }
       end
@@ -19,15 +19,37 @@ describe 'em-http' do
     it 'returns a response unfinished respons object' do
       EventMachine.run do
         Keener.projects.get.on_complete { |env|
-          env[:body].first.id.should eq('50e8d5f43843316b28000001')
+          env[:body].first.id.should eq(PROJECT_ID)
           EventMachine.stop
         }
       end
     end
   end
 
+  context 'in parallel' do
+    subject :responses do
+      responses = []
+
+      Keener.in_parallel do |k|
+        responses << k.count(PROJECT_ID, COLLECTION_NAME).get
+        responses << k.count_unique(PROJECT_ID, COLLECTION_NAME, 'character').get
+      end
+
+      responses
+    end
+
+    it 'return the count' do
+      responses.first.body.result.should eq(2757)
+    end
+
+    it 'returns the unique count' do
+      responses.last.body.result.should eq(9)
+    end
+  end
+
+
   it 'runs outside an event machine loop' do
-    Keener.projects.get.first.id.should eq('50e8d5f43843316b28000001')
+    Keener.projects.get.first.id.should eq(PROJECT_ID)
   end  
 end
 
