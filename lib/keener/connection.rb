@@ -14,8 +14,8 @@ module Keener
       end
     end
 
-    def in_parallel(&block)
-      connection.in_parallel do
+    def in_parallel(manager = nil, &block)
+      connection.in_parallel(manager) do
         block.call(self)
       end
     end
