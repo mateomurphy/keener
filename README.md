@@ -1,6 +1,6 @@
 # Keener
 
-TODO: Write a gem description
+Unofficial gem for accessing the keen api
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO
 
 ## Contributing
 
