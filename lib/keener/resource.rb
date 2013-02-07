@@ -17,24 +17,37 @@ module Keener
         config.response :logger if Keener.log_responses
 
         #config.use      :instrumentation      
-        config.adapter  ::Faraday.default_adapter
+        config.adapter  Keener.adapter || ::Faraday.default_adapter
       end
     end
 
-    def get
-      parse_response connection.get("#{version}/#{url}", options)
+    def get(&block)
+      handle_response connection.get("#{version}/#{url}", options), &block
     end
 
     def head
       connection.head("#{version}/#{url}", options)
     end
 
-    def parse_response(response)
-      if response.body.respond_to?(:error_code)
-        raise Error.const_get(response.body.error_code), response.body.message
+    def parse_response(body)
+      if body.respond_to?(:error_code)
+        raise Error.const_get(body.error_code), body.message 
       end
+      body
+    end
 
-      response.body
+    def handle_response(response, &block)
+      if response.finished?
+        response = parse_response(response.body)
+      end
+      
+      if block
+        response.on_complete do |env|
+          block.call(parse_response(env[:body]))
+        end
+      end
+        
+      response
     end
 
     def version

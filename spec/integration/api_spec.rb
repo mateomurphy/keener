@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Keener::Api do
+  before :all do
+    Keener.adapter = nil
+  end
+
   describe '.count' do
     context 'without options', :vcr => { :cassette_name => 'count/no_options' } do
       subject :count do
