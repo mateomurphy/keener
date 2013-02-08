@@ -1,6 +1,9 @@
 require 'keener'
 require 'vcr'
 require 'eventmachine'
+require 'typhoeus'
+require 'typhoeus/adapters/faraday'
+
 
 # Integration test data
 PROJECT_ID = "50e8d5f43843316b28000001"

@@ -21,4 +21,14 @@ describe 'adapters' do
     it_behaves_like "a sync adapter"
     it_behaves_like "a parallel adapter"
   end
+
+  describe 'typhoeus' do
+    before :all do
+      Keener.reset_connection
+      Keener.adapter = :typhoeus
+    end
+
+    it_behaves_like "a sync adapter"
+    it_behaves_like "a parallel adapter"
+  end  
 end
