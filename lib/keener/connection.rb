@@ -1,7 +1,15 @@
 module Keener
   module Connection
+    def url
+      if Keener.use_ssl
+        'https://api.keen.io'
+      else
+        'http://api.keen.io'
+      end
+    end
+
     def connection
-      @connection ||= ::Faraday.new(:url => 'http://api.keen.io') do |config|
+      @connection ||= ::Faraday.new(:url => url, :ssl => ssl_config) do |config|
         config.headers['Authorization'] = Keener.api_key
         config.headers['Content-Type'] = 'application/json'
 
