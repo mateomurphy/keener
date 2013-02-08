@@ -1,3 +1,7 @@
+# Implements direct access to the api
+#
+# https://keen.io/docs/api/reference/
+
 module Keener
   module Api
     def average(project_id, event_collection, target_property, options = {})

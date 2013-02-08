@@ -1,6 +1,6 @@
 # Keener
 
-Unofficial gem for accessing the keen api
+Unofficial gem for accessing the keen api, based on [Faraday](https://github.com/lostisland/faraday).
 
 ## Installation
 
