@@ -15,21 +15,19 @@ module Keener
       Keener.connection.head("#{version}/#{url}", options)
     end
 
-    def parse_response(body)
-      if body.respond_to?(:error_code)
-        raise Error.const_get(body.error_code), body.message 
-      end
+    def check_for_errors(body)
+      raise body if body.is_a?(Error)
       body
     end
 
     def handle_response(response, &block)
       if response.finished?
-        response = parse_response(response.body)
+        response = check_for_errors(response.body)
       end
       
       if block
         response.on_complete do |env|
-          block.call(parse_response(env[:body]))
+          block.call(env[:body])
         end
       end
         

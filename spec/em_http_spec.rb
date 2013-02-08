@@ -25,6 +25,17 @@ describe 'em-http' do
         }
       end
     end
+
+
+    it 'returns a body containing a ResourceNotFoundError' do
+      EventMachine.run do
+        Keener.project('xxx').get.on_complete { |env|
+          env[:body].should be_a(Keener::Error::ResourceNotFoundError)
+          EventMachine.stop
+        }
+      end
+    end
+
   end
 
   context 'in parallel' do

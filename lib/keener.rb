@@ -4,6 +4,7 @@ require 'faraday'
 require 'faraday_middleware'
 
 require 'keener/config'
+require 'keener/response'
 require 'keener/connection'
 require 'keener/resource'
 require 'keener/errors'

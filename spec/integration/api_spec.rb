@@ -6,6 +6,12 @@ describe Keener::Api do
     Keener.adapter = nil
   end
 
+  describe 'errors' do
+    it 'raises a not found error' do
+      expect { Keener.project('xxx').get }.to raise_error(Keener::Error::ResourceNotFoundError)
+    end
+  end
+
   describe '.count' do
     context 'without options', :vcr => { :cassette_name => 'count/no_options' } do
       subject :count do

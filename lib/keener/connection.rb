@@ -3,14 +3,14 @@ module Keener
     def connection
       @connection ||= ::Faraday.new(:url => 'http://api.keen.io') do |config|
         config.headers['Authorization'] = Keener.api_key
+        config.headers['Content-Type'] = 'application/json'
 
-        config.response :mashify
+        config.use Response::Middleware
         config.response :json
-
         config.response :logger if Keener.log_responses
 
         #config.use      :instrumentation      
-        config.adapter  Keener.adapter || ::Faraday.default_adapter
+        config.adapter Keener.adapter || ::Faraday.default_adapter
       end
     end
 
