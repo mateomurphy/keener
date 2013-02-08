@@ -1,5 +1,5 @@
 shared_examples 'a sync adapter' do
-  it 'runs outside an event machine loop' do
+  it 'makes a blocking request' do
     Keener.projects.get.first.id.should eq(PROJECT_ID)
   end 
 end
