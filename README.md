@@ -1,5 +1,8 @@
 # Keener
 
+[![Build Status](https://travis-ci.org/mateomurphy/keener.png?branch=master)](https://travis-ci.org/mateomurphy/keener)
+[![Dependency Status](https://gemnasium.com/mateomurphy/keener.png)](https://gemnasium.com/mateomurphy/keener)
+
 Unofficial gem for accessing the keen api, based on [Faraday](https://github.com/lostisland/faraday).
 
 ## Installation
