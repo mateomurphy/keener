@@ -14,6 +14,10 @@ module Keener
       end
     end
 
+    def reset_connection
+      @connection = nil
+    end
+
     def in_parallel(manager = nil, &block)
       connection.in_parallel(manager) do
         block.call(self)

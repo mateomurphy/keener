@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Keener::Api do
   before :all do
+    Keener.reset_connection    
     Keener.adapter = nil
   end
 

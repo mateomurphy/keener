@@ -3,6 +3,7 @@ require 'spec_helper'
 # try running requests async
 describe 'em-http' do
   before :all do
+    Keener.reset_connection
     Keener.adapter = :em_http
   end
 
