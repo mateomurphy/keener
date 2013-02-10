@@ -27,4 +27,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rspec", "~> 2.12"
   gem.add_development_dependency "vcr", "~> 2.4.0"
   gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'yard'
+  gem.add_development_dependency 'redcarpet'
 end
