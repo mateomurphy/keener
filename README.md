@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO
+See http://www.rubydoc.info/github/mateomurphy/keener/master/frames, especially the Keener::Api module
 
 ## Contributing
 
