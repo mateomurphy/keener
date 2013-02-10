@@ -39,9 +39,9 @@ describe Keener::Api do
     its (:result) { should eq(9) }
   end
 
-  describe '.events', :vcr => { :cassette_name => 'events' } do
+  describe '.event_collections', :vcr => { :cassette_name => 'events' } do
     subject :events do
-      Keener.events(PROJECT_ID).get
+      Keener.event_collections(PROJECT_ID).get
     end
 
     its (:count) { should eq(1)}
