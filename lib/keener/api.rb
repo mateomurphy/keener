@@ -37,6 +37,14 @@ module Keener
       resource "projects/#{project_id}/events"
     end
 
+    def extraction(project_id, options = {})
+      resource "projects/#{project_id}/queries/extraction", options
+    end
+
+    def funnel(project_id, options = {})
+      resource "projects/#{project_id}/queries/funnel", options
+    end
+
     def maximum(project_id, event_collection, target_property, options = {})
       options[:event_collection] = event_collection
       options[:target_property] = target_property
@@ -70,6 +78,18 @@ module Keener
 
     def resource(url, options = {})
       Resource.new(url, options)
+    end
+
+    def saved_query(project_id, saved_query_name, options)
+      resource "projects/#{project_id}/saved_queries/#{saved_query_name}", options
+    end
+
+    def saved_query_result(project_id, saved_query_name)
+      resource "projects/#{project_id}/saved_queries/#{saved_query_name}/result"
+    end
+
+    def saved_queries(project_id)
+      resource "projects/#{project_id}/saved_queries", options
     end
 
     def select_unique(project_id, event_collection, target_property, options = {})
