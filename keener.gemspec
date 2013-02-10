@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["mateo.murphy@gmail.com"]
   gem.description   = %q{Unofficial gem for accessing keen.io}
   gem.summary       = %q{An unofficial gem for accessing keen.io}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/mateomurphy/keener"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
