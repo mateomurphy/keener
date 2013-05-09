@@ -1,3 +1,5 @@
+require 'json'
+
 module Keener
   # This class represents an API resource and supports methods for making calls on it
   class Resource
@@ -5,7 +7,13 @@ module Keener
 
     def initialize(url = '', options = {})
       @url = url
-      @options = options
+      @options = prepare_options(options)
+    end
+
+    # Converts an options hash into the proper format for sending
+    def prepare_options(options)
+      options[:filters] = JSON[options[:filters]] if options[:filters]
+      options
     end
 
     # Performs a get request on the given resource. A block passed will be used as an on_complete callback
