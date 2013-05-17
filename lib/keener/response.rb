@@ -11,6 +11,17 @@ module Keener
         end
       end
 
+      def on_complete(env)
+        case env[:stats]
+        when 500
+          env[:body] = Error::ServerError.new(env[:body])
+        when 204, 304
+          # do nothing
+        else
+          env[:body] = parse(::JSON.parse(env[:body]))
+        end
+      end
+
       def parse(body)
         case body
         when Hash

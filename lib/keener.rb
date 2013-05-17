@@ -1,7 +1,6 @@
 require 'keener/version'
 
 require 'faraday'
-require 'faraday_middleware'
 
 require 'keener/config'
 require 'keener/response'

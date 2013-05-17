@@ -7,8 +7,16 @@ describe Keener::Api do
   end
 
   describe 'errors' do
-    it 'raises a not found error' do
+    it 'raises a resource not found error with an invalid project' do
       expect { Keener.project('xxx').get }.to raise_error(Keener::Error::ResourceNotFoundError)
+    end
+    
+    it 'raises an event collection not found error with an invalid collection' do
+      expect { Keener.count(PROJECT_ID, 'foobar').get }.to raise_error(Keener::Error::EventCollectionNotFoundError)
+    end
+    
+    it 'raise an error' do
+      expect { Keener.count(PROJECT_ID, COLLECTION_NAME, :filters => ['wef']).get }.to raise_error(Keener::Error::InvalidFilterError)
     end
   end
 

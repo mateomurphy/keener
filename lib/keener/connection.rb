@@ -14,10 +14,8 @@ module Keener
         config.headers['Content-Type'] = 'application/json'
 
         config.use Response::Middleware
-        config.response :json
         config.response :logger if Keener.log_responses
 
-        #config.use      :instrumentation      
         config.adapter Keener.adapter || ::Faraday.default_adapter
       end
     end
